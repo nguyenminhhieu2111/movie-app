@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import { Route, Router, Routes } from "react-router-dom";
+import Banner from "./components/banner/Banner";
+import Nav_bar from "./components/layout/Nav_bar";
+import MovieDetail from "./components/movie/MovieDetail";
+import HomePage from "./components/pages/HomePage";
+import Main from "./components/pages/Main";
+import MoviePage from "./components/pages/MoviePage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Fragment>
+   <Routes>
+     <Route element={<Main></Main>}>
+     <Route path="/" element={
+     <>
+     <Banner></Banner>
+     <HomePage></HomePage>
+     </>
+     }></Route>
+
+     <Route path="/movies" element={<MoviePage></MoviePage>}></Route>
+     <Route path="/movie/:movieId" element={<MovieDetail></MovieDetail>}></Route>
+     </Route>
+   </Routes>
+   </Fragment>
   );
 }
 
